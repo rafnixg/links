@@ -24,3 +24,10 @@ BASE_STYLE = {
         "border_radius": Size.SMALL.value,
     },
 }
+
+heading = {
+    "font_size": ["1.3em", "1.5em", "2em", "2em", "2em"],
+}
+sub_heading = {
+    "font_size": ["1.12em", "1.2em", "1.2em", "1.2em", "1.2em"],
+}

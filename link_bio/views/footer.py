@@ -9,7 +9,9 @@ def footer() -> rx.Component:
     """The footer of the app."""
     return rx.vstack(
         rx.text(
-            f"©️ 2012-{date.today().year} Made with ❤️ by Rafnix Guzmán",
+            f"©️ 2012-{date.today().year} Made with ❤️ using Reflex by Rafnix Guzmán",
+            white_space="normal",
+            text_align="center",
         ),
         rx.link(
             "Source code available on GitHub.",
