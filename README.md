@@ -19,7 +19,6 @@ reflex run
 ## Export
 file exported in public folder
 ```bash
-reflex export --frontend-only --no-zip
 ./public_export
 ```
 
