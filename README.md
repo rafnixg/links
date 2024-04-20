@@ -32,5 +32,5 @@ reflex run --env prod
 
 ```bash
 docker build -t reflex-links:latest .
-docker run -it --rm -p 8000:8000 -p 3000:3000 --name links reflex-links:latest
+docker run -d -p 8000:8000 -p 3000:3000 --name links reflex-links:latest
 ```
