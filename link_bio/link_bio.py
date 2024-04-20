@@ -24,6 +24,11 @@ def index() -> rx.Component:
             margin_y=styles.Size.DEFAULT.value,
         ),
         footer(),
+        rx.script(
+            src="https://analytics.rafnixg.dev/js/script.js",
+            custom_attrs={"data-domain": "rafnixg.dev"},
+            defer=True,
+        ),
         align="center",
         padding_x=styles.Size.SMALL.value,
     )
