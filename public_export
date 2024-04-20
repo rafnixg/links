@@ -1,4 +1,9 @@
 #/bin/sh
-
+echo "Cleaning up"
+rm -rf .web/_static
+rm -rf public
+echo "Building"
 mkdir public
+reflex export --frontend-only --no-zip
+echo "Copying static files"
 cp -r .web/_static/* public/
