@@ -1,0 +1,4 @@
+#/bin/sh
+
+mkdir public
+cp -r .web/_static/* public/

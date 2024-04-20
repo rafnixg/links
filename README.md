@@ -17,9 +17,10 @@ reflex run
 ```
 
 ## Export
-
+file exported in public folder
 ```bash
-reflex export
+reflex export --frontend-only --no-zip
+./public_export
 ```
 
 ## Production
