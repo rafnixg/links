@@ -26,7 +26,7 @@ def index() -> rx.Component:
         footer(),
         rx.script(
             src="https://analytics.rafnixg.dev/js/script.js",
-            custom_attrs={"data-domain": "rafnixg.dev"},
+            custom_attrs={"data-domain": "links.rafnixg.dev"},
             defer=True,
         ),
         align="center",
