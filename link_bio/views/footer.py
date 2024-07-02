@@ -14,8 +14,8 @@ def footer() -> rx.Component:
             text_align="center",
         ),
         rx.link(
-            "Source code available on GitHub.",
-            href="https://github.com/rafnixg/links",
+            "Source Code </>",
+            href="https://git.rafnixg.dev/rafnixg/links",
             is_external=True,
         ),
         align="center",

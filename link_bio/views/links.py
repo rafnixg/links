@@ -25,6 +25,9 @@ def links() -> rx.Component:
             url="https://resume.rafnixg.dev/?ref=links",
         ),
         title("Code"),
+        link_button(
+            text="Own Git Server", tag="git-fork", url="https://git.rafnixg.dev/rafnixg"
+        ),
         link_button(text="GitHub", tag="github", url="https://github.com/rafnixg"),
         link_button(text="GitLab", tag="gitlab", url="https://gitlab.com/rafnixg"),
     )
