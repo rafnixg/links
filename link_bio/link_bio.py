@@ -25,9 +25,8 @@ def index() -> rx.Component:
         ),
         footer(),
         rx.script(
-            src="https://analytics.rafnixg.dev/js/script.js",
-            custom_attrs={"data-domain": "links.rafnixg.dev"},
-            defer=True,
+            src="https://umami.rafnixg.dev/script.js",
+            custom_attrs={"data-website-id": "adcf0b65-1921-4088-bee2-c46dc1b987ef"},
         ),
         align="center",
         padding_x=styles.Size.SMALL.value,
