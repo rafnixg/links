@@ -1,7 +1,7 @@
 # Links Bio Rafnix Guzmán
 
 [![Python Version](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![Reflex](https://img.shields.io/badge/Reflex-0.4.8-purple.svg)](https://reflex.dev/)
+[![Reflex](https://img.shields.io/badge/Reflex-0.8.24-purple.svg)](https://reflex.dev/)
 [![GitHub stars](https://img.shields.io/github/stars/rafnixg/links.svg?style=social&label=Star)](https://github.com/rafnixg/links)
 [![GitHub forks](https://img.shields.io/github/forks/rafnixg/links.svg?style=social&label=Fork)](https://github.com/rafnixg/links/fork)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/rafnixg/links)

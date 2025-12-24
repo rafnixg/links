@@ -9,6 +9,6 @@ mkdir public
 reflex export --frontend-only --no-zip
 
 echo "Copying static files"
-cp -r .web/_static/* public/
+cp -r .web/build/client/* public/
 
 echo "Done"
