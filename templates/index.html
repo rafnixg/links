@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="styles.css">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="header">
+        <div class="avatar">
+            <img src="{{ bio.avatar }}" alt="{{ bio.avatar_alt }}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="avatar-fallback">{{ bio.avatar_alt }}</div>
+        </div>
+        <div class="text-stack">
+            <h1 class="heading">{{ bio.greeting }}</h1>
+            <p class="sub-heading">{{ bio.subtitle }}</p>
+            <p class="handle">{{ bio.handle }}</p>
+        </div>
+    </div>
+    
+    <div class="links">
+        {% for section, link_list in links.items() %}
+        <h2 class="section-title" style="color: {{ colors[section] }};">{{ section }}</h2>
+        {% for link in link_list %}
+        <a href="{{ link.url }}" class="link-button" style="border-color: {{ colors[section] }};">
+            {{ icons[link.tag] | safe }}
+            {{ link.text }}
+        </a>
+        {% endfor %}
+        {% endfor %}
+    </div>
+    
+    <div class="footer">
+        <p>{{ footer.copyright }}</p>
+        <a href="{{ footer.source_url }}">Source Code &lt;/&gt;</a>
+    </div>
+</div>
+{% endblock %}

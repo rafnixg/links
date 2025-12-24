@@ -1,0 +1,83 @@
+{
+  "bio": {
+    "name": "Rafnix Guzmán",
+    "greeting": "Hi, I'm Rafnix Guzmán",
+    "subtitle": "Python & Odoo Developer | Tech Writer",
+    "handle": "@rafnixg",
+    "avatar": "/logo.png",
+    "avatar_alt": "RG"
+  },
+  "links": {
+    "Links": [
+      {
+        "text": "Personal Website",
+        "tag": "globe",
+        "url": "https://rafnixg.dev?ref=links"
+      },
+      {
+        "text": "Read our blog",
+        "tag": "rss",
+        "url": "https://blog.rafnixg.dev?ref=links"
+      }
+    ],
+    "Professional": [
+      {
+        "text": "LinkedIn",
+        "tag": "linkedin",
+        "url": "https://www.linkedin.com/in/rafnixg"
+      },
+      {
+        "text": "Resume CV",
+        "tag": "newspaper",
+        "url": "https://resume.rafnixg.dev/?ref=links"
+      }
+    ],
+    "Code": [
+      {
+        "text": "Own Git Server",
+        "tag": "git-fork",
+        "url": "https://git.rafnixg.dev/rafnixg"
+      },
+      {
+        "text": "GitHub",
+        "tag": "github",
+        "url": "https://github.com/rafnixg"
+      },
+      {
+        "text": "GitLab",
+        "tag": "gitlab",
+        "url": "https://gitlab.com/rafnixg"
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "©️ 2012-{year} Made with ❤️ using Jinja by Rafnix Guzmán",
+    "source_url": "https://git.rafnixg.dev/rafnixg/links"
+  },
+  "analytics": {
+    "umami_src": "https://umami.rafnixg.dev/script.js",
+    "website_id": "adcf0b65-1921-4088-bee2-c46dc1b987ef"
+  },
+  "meta": {
+    "title": "Rafnix Guzmán | Enlaces, proyectos y artículos.",
+    "description": "Enlaces a mis redes sociales, proyectos y artículos.",
+    "author": "Rafnix Guzmán",
+    "keywords": "Python, Odoo, Developer, Tech Writer",
+    "charset": "UTF-8",
+    "viewport": "width=device-width, initial-scale=1.0"
+  },
+  "icons": {
+    "globe": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"2\" y1=\"12\" x2=\"22\" y2=\"12\"></line><path d=\"m12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z\"></path><line x1=\"12\" y1=\"2\" x2=\"12\" y2=\"22\"></line></svg>",
+    "rss": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 11a9 9 0 0 1 9 9\"></path><path d=\"M4 4a16 16 0 0 1 16 16\"></path><circle cx=\"5\" cy=\"19\" r=\"1\"></circle></svg>",
+    "linkedin": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z\"></path><rect x=\"2\" y=\"9\" width=\"4\" height=\"12\"></rect><circle cx=\"4\" cy=\"4\" r=\"2\"></circle></svg>",
+    "newspaper": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0-2 2Zm0 0a2 2 0 0 0 2 2h16\"></path><path d=\"M14 2v4a2 2 0 0 0 2 2h4\"></path><path d=\"M10 12h4\"></path><path d=\"M10 16h4\"></path><path d=\"M10 8h2\"></path></svg>",
+    "github": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22\"></path></svg>",
+    "gitlab": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m22 13.29-3.33-10a.42.42 0 0 0-.14-.18.38.38 0 0 0-.22-.11.39.39 0 0 0-.23.07.42.42 0 0 0-.14.18l-2.26 6.67H8.32L6.06 3.36a.42.42 0 0 0-.14-.18.38.38 0 0 0-.22-.11.39.39 0 0 0-.23.07.42.42 0 0 0-.14.18L2 13.29a.74.74 0 0 0 .28.74.75.75 0 0 0 .58.14l8.78-2.63a.5.5 0 0 1 .25 0l8.78 2.63a.76.76 0 0 0 .58-.14.75.75 0 0 0 .28-.74Z\"></path></svg>",
+    "git-fork": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"18\" r=\"3\"></circle><circle cx=\"6\" cy=\"6\" r=\"3\"></circle><circle cx=\"18\" cy=\"6\" r=\"3\"></circle><path d=\"M18 9v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9\"></path><path d=\"M12 12v3\"></path></svg>"
+  },
+  "colors": {
+    "Links": "#7c3aed",
+    "Professional": "#f59e0b", 
+    "Code": "#06b6d4"
+  }
+}

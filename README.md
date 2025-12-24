@@ -1,22 +1,24 @@
 # Links Bio Rafnix Guzmán
 
 [![Python Version](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![Reflex](https://img.shields.io/badge/Reflex-0.8.24-purple.svg)](https://reflex.dev/)
+[![Jinja2](https://img.shields.io/badge/Jinja2-3.1.2-orange.svg)](https://jinja.palletsprojects.com/)
 [![GitHub stars](https://img.shields.io/github/stars/rafnixg/links.svg?style=social&label=Star)](https://github.com/rafnixg/links)
 [![GitHub forks](https://img.shields.io/github/forks/rafnixg/links.svg?style=social&label=Fork)](https://github.com/rafnixg/links/fork)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/rafnixg/links)
 
-A modern and responsive personal bio links page built with [Reflex](https://reflex.dev/), a Python web framework. This project serves as a centralized hub for all social media profiles, projects, and articles.
+A modern and responsive personal bio links page built with a custom Static Site Generator using Jinja2 templating. This project serves as a centralized hub for all social media profiles, projects, and articles.
 
 ## ✨ Features
 
-- 🎨 Modern and responsive design
-- 🌙 Dark theme interface
-- 🚀 Built with Python and Reflex framework
-- 📱 Mobile-friendly responsive layout
-- 🐳 Docker support for easy deployment
+- 🎨 **2026 Brutalist Design**: Raw edges, asymmetrical layouts, and bold typography with cosmic midnight color palette by sections
+- 🌙 Dark theme interface with high contrast
+- 🚀 Built with Python and Jinja2 templating
+- 📱 Mobile-friendly responsive layout with experimental positioning
+- 🐳 Static site generation for fast hosting
 - 📊 Analytics integration with Umami
 - 🔍 SEO optimized with meta tags
+- ✨ **Motion Design**: Subtle animations, floating elements, and interactive hovers
+- ♿ **Accessibility**: Reduced motion support and GPU-accelerated animations
 
 ## 🚀 Quick Start
 
@@ -45,6 +47,16 @@ pip install -r requirements.txt
 ```
 
 ## 💻 Usage
+
+### Building the Site
+
+To generate the static site:
+
+```bash
+python build.py
+```
+
+The generated site will be in the `public/` directory.
 
 ### Development Mode
 
@@ -103,8 +115,10 @@ links/
 
 ## 🛠️ Technologies
 
-- **Framework**: [Reflex 0.4.8](https://reflex.dev/) - Full-stack Python framework
+- **Static Site Generator**: Custom Python/Jinja2 SSG
 - **Language**: Python 3.11+
+- **Templating**: Jinja2 3.1.2
+- **Styling**: CSS3 with animations and brutalist design
 - **Analytics**: Umami Analytics
 - **Containerization**: Docker
 
