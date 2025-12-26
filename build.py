@@ -12,7 +12,7 @@ from data_loader import load_data, validate_data
 
 def setup_jinja():
     """Setup Jinja environment"""
-    template_dir = Path(__file__).parent / 'templates'
+    template_dir = Path(__file__).parent / 'src' / 'linkbio' / 'templates'
     env = Environment(loader=FileSystemLoader(template_dir))
     return env
 
@@ -32,7 +32,7 @@ def copy_assets(source_dir, dest_dir):
 def copy_static_files(project_root, output_dir):
     """Copy static files like CSS"""
     # Copy styles.css
-    styles_src = project_root / 'templates' / 'styles.css'
+    styles_src = project_root / 'src' / 'linkbio' / 'templates' / 'styles.css'
     styles_dest = output_dir / 'styles.css'
     if styles_src.exists():
         shutil.copy2(styles_src, styles_dest)
