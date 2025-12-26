@@ -4,7 +4,7 @@
     "greeting": "Hi, I'm Rafnix Guzmán",
     "subtitle": "Python & Odoo Developer | Tech Writer",
     "handle": "@rafnixg",
-    "avatar": "/logo.png",
+    "avatar": "/assets/logo.png",
     "avatar_alt": "RG"
   },
   "links": {
@@ -33,11 +33,7 @@
       }
     ],
     "Code": [
-      {
-        "text": "Own Git Server",
-        "tag": "git-fork",
-        "url": "https://git.rafnixg.dev/rafnixg"
-      },
+      
       {
         "text": "GitHub",
         "tag": "github",
@@ -47,11 +43,16 @@
         "text": "GitLab",
         "tag": "gitlab",
         "url": "https://gitlab.com/rafnixg"
+      },
+      {
+        "text": "Own Git Server",
+        "tag": "git-fork",
+        "url": "https://git.rafnixg.dev/rafnixg"
       }
     ]
   },
   "footer": {
-    "copyright": "©️ 2012-{year} Made with ❤️ using Jinja by Rafnix Guzmán",
+    "copyright": "©️ 2012-{year} Made with ❤️ by Rafnix Guzmán",
     "source_url": "https://git.rafnixg.dev/rafnixg/links"
   },
   "analytics": {

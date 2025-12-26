@@ -10,7 +10,7 @@ with open("README.md", encoding="utf-8") as f:
 
 setup(
     name="linkbio",
-    version="0.1.0",
+    version="1.0.0",
     description="A modern, brutalist-designed static site generator for link bio pages",
     long_description=long_description,
     long_description_content_type="text/markdown",

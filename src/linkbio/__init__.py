@@ -12,9 +12,8 @@ Example:
 
 from .core import LinkBioGenerator, build, init, serve
 from .data import load_data, validate_data, save_data
-from .cli import main as cli_main
 
-__version__ = "0.1.0"
+__version__ = "1.0.0"
 __author__ = "Rafnix Guzmán"
 __email__ = "rafnixg@gmail.com"
 

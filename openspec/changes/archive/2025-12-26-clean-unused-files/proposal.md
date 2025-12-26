@@ -1,23 +1,14 @@
 # Proposal: Clean Unused Files
 
-## Summary
+## Why
 Consolidate templates into a single location (src/linkbio/templates/) and remove other unnecessary files and directories from the codebase to reduce clutter and improve maintainability.
 
-## Motivation
-- **Reduce Clutter**: Eliminate files that are not used in the current build process or development workflow.
-- **Improve Maintainability**: A cleaner codebase is easier to navigate and understand.
-- **Avoid Confusion**: Remove duplicates that could lead to inconsistencies.
-
-## Scope
+## What Changes
 - Consolidate templates into src/linkbio/templates/ and update build.py
 - Remove root templates/ directory
 - Remove unused docs/INSTALL.md
 - Remove public_export file
-- Ensure no breaking changes to build or functionality.
-
-## Impact
-- **Codebase Size**: Reduction in repository size.
-- **Build Process**: No changes, as removed files are not used.
+- Ensure no breaking changes to build or functionality
 - **Maintenance**: Easier to manage remaining files.
 
 ## Alternatives Considered

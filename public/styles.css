@@ -1,0 +1,289 @@
+/* Styles for Link Bio SSG - 2026 Brutalist Design */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    background-color: #0d1117; /* Midnight blue for cosmic brutalism */
+    background-image: 
+        linear-gradient(rgba(138, 173, 244, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(173, 216, 230, 0.04) 1px, transparent 1px);
+    background-size: 20px 20px; /* Subtle grid for raw texture */
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 600px; /* Limitado a 600px en escritorio */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 2em;
+    width: 100%;
+    justify-content: flex-start; /* Asymmetrical: not centered */
+    margin-left: 5%; /* Consistent with other elements */
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #1f2937; /* Cosmic gray for avatar background */
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 2px solid #7c3aed; /* Cosmic purple border */
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2); /* Purple shadow for floating effect */
+    animation: float 3s ease-in-out infinite;
+    will-change: transform; /* GPU acceleration */
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-fallback {
+    display: none;
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-stack {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    flex: 1;
+}
+
+.heading {
+    font-size: clamp(1.5em, 6vw, 2.5em);
+    font-weight: 700; /* Bold */
+    color: #ffffff;
+    margin: 0 0 0.5em 0;
+    animation: textReveal 1s ease-out;
+    transition: transform 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.heading:hover {
+    transform: scale(1.05);
+    letter-spacing: 2px;
+}
+
+@keyframes textReveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.sub-heading {
+    font-size: clamp(1em, 4vw, 1.2em);
+    font-weight: 400; /* Regular */
+    color: #a0a0a0; /* Electric gray for secondary text */
+    margin: 0 0 0.5em 0;
+    animation: textReveal 1s ease-out 0.2s both;
+}
+
+.handle {
+    font-size: 1em;
+    font-weight: 400;
+    color: #a0a0a0;
+    margin: 0;
+    animation: textReveal 1s ease-out 0.4s both;
+}
+
+.links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section-title {
+    font-size: 1.2em;
+    font-weight: 700;
+    text-align: left; /* Asymmetrical alignment */
+    margin: 1.5em 0 20px 5%; /* Offset margin */
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+    cursor: default;
+    will-change: transform; /* GPU acceleration */
+    text-shadow: 0 0 10px currentColor; /* Subtle glow effect */
+    opacity: 0; /* Start hidden */
+    transform: translateY(30px); /* Start below */
+    animation: float 4s ease-in-out infinite;
+}
+
+.section-title.animate {
+    animation: fadeInUp 0.8s ease-out forwards, float 4s ease-in-out infinite;
+}
+
+.section-title:hover {
+    transform: skew(-2deg); /* Subtle brutalist effect */
+    text-shadow: 0 0 20px currentColor, 0 0 30px currentColor; /* Enhanced glow on hover */
+}
+
+.section-title:nth-child(1) { animation-delay: 0.2s; }
+.section-title:nth-child(2) { animation-delay: 0.4s; }
+.section-title:nth-child(3) { animation-delay: 0.6s; }
+.section-title:nth-child(4) { animation-delay: 0.8s; }
+
+.link-button {
+    width: 100%;
+    max-width: 500px; /* Max width 500px */
+    padding: 14px; /* 14px padding */
+    border-radius: 0; /* Raw edges for brutalism */
+    background: transparent;
+    border: 3px solid; /* Thicker border for brutalist feel */
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* 10px gap between icon and text */
+    transition: transform 0.2s, background 0.2s;
+    will-change: transform; /* GPU acceleration */
+    margin-left: 5%; /* Consistent with section titles */
+    margin-right: 5%; /* Balance the asymmetry */
+    opacity: 0; /* Start hidden */
+    transform: translateY(30px); /* Start below */
+}
+
+.link-button.animate {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.link-button:hover {
+    background: rgba(255, 255, 255, 0.1); /* Opacidad sutil del color del borde */
+    transform: scale(1.02) rotate(-0.5deg); /* Slight rotation for experimental feel */
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+}
+
+.link-button:nth-child(1) { animation-delay: 0.3s; }
+.link-button:nth-child(2) { animation-delay: 0.5s; }
+.link-button:nth-child(3) { animation-delay: 0.7s; }
+.link-button:nth-child(4) { animation-delay: 0.9s; }
+.link-button:nth-child(5) { animation-delay: 1.1s; }
+.link-button:nth-child(6) { animation-delay: 1.3s; }
+
+.link-button svg {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.footer {
+    text-align: left; /* Asymmetrical alignment */
+    margin: 2em 5% 2em 5%; /* Consistent margins with other elements */
+    font-size: 0.9em;
+    color: #a0a0a0;
+    animation: fadeIn 1s ease-out 1s both;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.footer a {
+    color: #7c3aed; /* Cosmic purple for links */
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        margin-left: 0; /* Center on mobile */
+    }
+    
+    .text-stack {
+        text-align: center;
+    }
+    
+    .avatar {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .section-title {
+        margin-left: 0; /* Center on mobile */
+        margin-right: 0;
+        text-align: center;
+    }
+    
+    .link-button {
+        margin-left: 0; /* Center on mobile */
+        margin-right: 0;
+    }
+    
+    .footer {
+        margin-left: 0; /* Center on mobile */
+        margin-right: 0;
+        text-align: center;
+    }
+    
+    body {
+        padding: 20px 15px;
+    }
+}
+
+/* Reduced motion support for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .avatar,
+    .section-title,
+    .link-button,
+    .footer {
+        animation: none;
+    }
+    
+    .section-title:hover,
+    .link-button:hover {
+        transform: none;
+    }
+}

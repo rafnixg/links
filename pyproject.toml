@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "linkbio"
-version = "0.1.0"
+version = "1.0.0"
 description = "A modern, brutalist-designed static site generator for link bio pages"
 readme = "README.md"
 license = {text = "MIT"}
@@ -17,7 +17,7 @@ maintainers = [
 ]
 keywords = ["static-site-generator", "link-bio", "jinja2", "brutalist-design"]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
