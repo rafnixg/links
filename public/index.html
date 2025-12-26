@@ -80,6 +80,35 @@
     </div>
 </div>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
+        });
+    }, observerOptions);
+
+    // Observe section titles and link buttons
+    document.querySelectorAll('.section-title, .link-button').forEach(el => {
+        observer.observe(el);
+        // Check if already in viewport and animate immediately
+        const rect = el.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        if (rect.top <= windowHeight * 0.9 && rect.bottom >= 0) {
+            el.classList.add('animate');
+        }
+    });
+});
+</script>
+
+
     <script src="https://umami.rafnixg.dev/script.js" data-website-id="adcf0b65-1921-4088-bee2-c46dc1b987ef"></script>
 </body>
 </html>

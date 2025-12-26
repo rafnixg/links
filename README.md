@@ -1,45 +1,265 @@
-# Links Bio Rafnix Guzmán
+# LinkBio
 
-[![Python Version](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![Jinja2](https://img.shields.io/badge/Jinja2-3.1.2-orange.svg)](https://jinja.palletsprojects.com/)
-[![GitHub stars](https://img.shields.io/github/stars/rafnixg/links.svg?style=social&label=Star)](https://github.com/rafnixg/links)
-[![GitHub forks](https://img.shields.io/github/forks/rafnixg/links.svg?style=social&label=Fork)](https://github.com/rafnixg/links/fork)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/rafnixg/links)
+[![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![PyPI Version](https://img.shields.io/pypi/v/linkbio.svg)](https://pypi.org/project/linkbio/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Jinja2](https://img.shields.io/badge/Jinja2-3.0+-orange.svg)](https://jinja.palletsprojects.com/)
+[![GitHub stars](https://img.shields.io/github/stars/rafnixg/linkbio.svg?style=social&label=Star)](https://github.com/rafnixg/linkbio)
+[![GitHub forks](https://img.shields.io/github/forks/rafnixg/linkbio.svg?style=social&label=Fork)](https://github.com/rafnixg/linkbio/fork)
 
-A modern and responsive personal bio links page built with a custom Static Site Generator using Jinja2 templating. This project serves as a centralized hub for all social media profiles, projects, and articles.
+A modern, brutalist-designed static site generator for creating beautiful link bio pages. Built with Python and Jinja2 templates, featuring 2026 design trends with cosmic midnight color palettes and experimental layouts.
 
 ## ✨ Features
 
-- 🎨 **2026 Brutalist Design**: Raw edges, asymmetrical layouts, and bold typography with cosmic midnight color palette by sections
-- 🌙 Dark theme interface with high contrast
+- 🎨 **2026 Brutalist Design**: Raw edges, asymmetrical layouts, and bold typography
+- 🌙 Cosmic midnight color palette with high contrast
 - 🚀 Built with Python and Jinja2 templating
-- 📱 Mobile-friendly responsive layout with experimental positioning
+- 📱 Mobile-friendly responsive layout
 - 🐳 Static site generation for fast hosting
-- 📊 Analytics integration with Umami
+- 📊 Analytics integration ready
 - 🔍 SEO optimized with meta tags
-- ✨ **Motion Design**: Subtle animations, floating elements, and interactive hovers
-- ♿ **Accessibility**: Reduced motion support and GPU-accelerated animations
+- ✨ **Motion Design**: Subtle animations and interactive hovers
+- ♿ **Accessibility**: Reduced motion support
+- 🛠️ **Library API**: Use as a Python library or CLI tool
+- 🐳 **Docker Support**: Multi-stage builds for development and production
 
 ## 🚀 Quick Start
 
-### Prerequisites
-
-- Python 3.11 or higher
-- pip (Python package manager)
-
 ### Installation
 
-1. Clone the repository:
+Install LinkBio using pip:
+
 ```bash
-git clone https://github.com/rafnixg/links.git
-cd links
+pip install linkbio
 ```
 
-2. Create and activate a virtual environment:
+Or install from source for development:
+
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+git clone https://github.com/rafnixg/linkbio.git
+cd linkbio
+pip install -e .
 ```
+
+### Create Your First Link Bio
+
+1. Initialize a new project:
+```bash
+linkbio init my-bio
+cd my-bio
+```
+
+2. Edit `data.json` with your information:
+```json
+{
+  "bio": {
+    "name": "Your Name",
+    "greeting": "Hi, I'm Your Name",
+    "subtitle": "Your awesome subtitle",
+    "handle": "@yourhandle",
+    "avatar": "/avatar.png",
+    "avatar_alt": "YN"
+  },
+  "links": {
+    "Social": [
+      {"text": "Website", "tag": "globe", "url": "https://example.com"},
+      {"text": "Twitter", "tag": "twitter", "url": "https://twitter.com/yourhandle"}
+    ]
+  }
+}
+```
+
+3. Build your site:
+```bash
+linkbio build
+```
+
+4. Serve locally for development:
+```bash
+linkbio serve
+```
+
+Your link bio will be available at http://localhost:8000
+
+## 💻 Usage
+
+### Command Line Interface
+
+LinkBio provides a comprehensive CLI for all operations:
+
+```bash
+# Initialize a new project
+linkbio init [directory]
+
+# Build the static site
+linkbio build [--output OUTPUT_DIR]
+
+# Serve locally for development
+linkbio serve [--port PORT] [--host HOST]
+
+# Show help
+linkbio --help
+```
+
+### Python API
+
+Use LinkBio as a Python library:
+
+```python
+from linkbio import build, init, serve
+
+# Initialize a new project
+init("my-bio-project")
+
+# Build the site
+output_dir = build()
+
+# Serve for development
+serve(port=8000)
+```
+
+### Advanced Usage
+
+```python
+from linkbio import LinkBioGenerator
+
+# Create a custom generator
+generator = LinkBioGenerator(project_root="/path/to/project")
+
+# Build with custom output directory
+output_path = generator.build_site(output_dir="/custom/output")
+
+# Load and validate data
+data = generator.load_data()
+generator.validate_data(data)
+```
+
+## 🐳 Docker Usage
+
+### Development
+
+Build and run the development container:
+
+```bash
+# Build development image
+docker build --target runtime -t linkbio:dev .
+
+# Run with volume mounting
+docker run -it --rm \
+  -v $(pwd):/app/project \
+  -v $(pwd)/public:/app/output \
+  -p 8000:8000 \
+  linkbio:dev \
+  linkbio serve --host 0.0.0.0
+```
+
+### Production
+
+Build and run the production container:
+
+```bash
+# Build production image
+docker build --target production -t linkbio:prod .
+
+# Run nginx server
+docker run -d -p 80:80 linkbio:prod
+```
+
+## 📁 Project Structure
+
+When you initialize a new LinkBio project, you'll get:
+
+```
+my-bio/
+├── data.json          # Site configuration and content
+├── templates/         # Jinja2 templates
+│   ├── index.html     # Main page template
+│   └── styles.css     # CSS styles
+├── assets/            # Static assets (images, etc.)
+└── public/            # Generated site (after build)
+```
+
+## 🛠️ Technologies
+
+- **Language**: Python 3.8+
+- **Templating**: Jinja2 3.0+
+- **Styling**: CSS3 with brutalist design
+- **Containerization**: Docker with multi-stage builds
+- **Package Management**: Modern Python packaging (pyproject.toml)
+
+## 📖 Configuration
+
+### data.json Structure
+
+```json
+{
+  "bio": {
+    "name": "Your Name",
+    "greeting": "Welcome message",
+    "subtitle": "Your subtitle",
+    "handle": "@yourhandle",
+    "avatar": "/path/to/avatar.png",
+    "avatar_alt": "Alt text for avatar"
+  },
+  "links": {
+    "Category Name": [
+      {
+        "text": "Link Text",
+        "tag": "icon-name",
+        "url": "https://example.com"
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "© {year} Your Name. All rights reserved."
+  },
+  "analytics": {},
+  "meta": {
+    "title": "Page Title",
+    "description": "Page description for SEO"
+  }
+}
+```
+
+### Custom Templates
+
+LinkBio uses Jinja2 templates. Customize `templates/index.html` and `templates/styles.css` to match your design needs.
+
+## 👤 Author
+
+**Rafnix Guzmán**
+
+- Website: [rafnixg.dev](https://rafnixg.dev)
+- Twitter: [@rafnixg](https://twitter.com/rafnixg)
+- GitHub: [@rafnixg](https://github.com/rafnixg)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## ⭐ Show your support
+
+Give a ⭐️ if this project helped you!
+
+## 📚 Documentation
+
+For detailed documentation, visit [linkbio.readthedocs.io](https://linkbio.readthedocs.io) (coming soon).
+
+## 🙏 Acknowledgments
+
+- Inspired by 2026 design trends
+- Built with modern Python packaging
+- Thanks to the Jinja2 and Python communities```
 
 3. Install dependencies:
 ```bash

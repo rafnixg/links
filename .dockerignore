@@ -1,8 +1,94 @@
-.web
+# Version control
 .git
-__pycache__/*
-Dockerfile
-Caddy.Dockerfile
-compose.yaml
-compose.*.yaml
-uploaded_files
+.gitignore
+.github
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Documentation
+docs/_build/
+*.md
+!README.md
+
+# Testing
+.coverage
+.pytest_cache/
+.tox/
+.cache
+
+# Docker
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# CI/CD
+.github/
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+.temp/
+
+# Logs
+*.log
+
+# Node.js (if any)
+node_modules/
+npm-debug.log*
+
+# Reflex specific
+.web/
+uploaded_files/
+
+# LinkBio specific
+public/
+public_export/
+*.db
+alembic/

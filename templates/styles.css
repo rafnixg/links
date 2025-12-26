@@ -78,6 +78,12 @@ body {
     color: #ffffff;
     margin: 0 0 0.5em 0;
     animation: textReveal 1s ease-out;
+    transition: transform 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.heading:hover {
+    transform: scale(1.05);
+    letter-spacing: 2px;
 }
 
 @keyframes textReveal {
@@ -133,9 +139,15 @@ body {
     margin: 1.5em 0 20px 5%; /* Offset margin */
     transition: transform 0.3s ease, text-shadow 0.3s ease;
     cursor: default;
-    animation: fadeInUp 0.8s ease-out both;
     will-change: transform; /* GPU acceleration */
     text-shadow: 0 0 10px currentColor; /* Subtle glow effect */
+    opacity: 0; /* Start hidden */
+    transform: translateY(30px); /* Start below */
+    animation: float 4s ease-in-out infinite;
+}
+
+.section-title.animate {
+    animation: fadeInUp 0.8s ease-out forwards, float 4s ease-in-out infinite;
 }
 
 .section-title:hover {
@@ -164,10 +176,15 @@ body {
     justify-content: center;
     gap: 10px; /* 10px gap between icon and text */
     transition: transform 0.2s, background 0.2s;
-    animation: fadeInUp 0.6s ease-out both;
     will-change: transform; /* GPU acceleration */
     margin-left: 5%; /* Consistent with section titles */
     margin-right: 5%; /* Balance the asymmetry */
+    opacity: 0; /* Start hidden */
+    transform: translateY(30px); /* Start below */
+}
+
+.link-button.animate {
+    animation: fadeInUp 0.6s ease-out forwards;
 }
 
 .link-button:hover {
