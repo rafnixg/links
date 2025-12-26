@@ -1,5 +1,5 @@
 """
-Setup script for LinkBio - backward compatibility with older pip versions.
+Setup script for LinkBioSite - backward compatibility with older pip versions.
 """
 
 from setuptools import setup
@@ -9,15 +9,15 @@ with open("README.md", encoding="utf-8") as f:
     long_description = f.read()
 
 setup(
-    name="linkbio",
+    name="linkbiosite",
     version="1.0.0",
     description="A modern, brutalist-designed static site generator for link bio pages",
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Rafnix Guzmán",
     author_email="rafnixg@gmail.com",
-    url="https://github.com/rafnixg/linkbio",
-    packages=["linkbio"],
+    url="https://github.com/rafnixg/links",
+    packages=["linkbiosite"],
     package_dir={"": "src"},
     include_package_data=True,
     install_requires=[
@@ -39,7 +39,7 @@ setup(
     },
     entry_points={
         "console_scripts": [
-            "linkbio=linkbio.cli:main",
+            "linkbiosite=linkbiosite.cli:main",
         ],
     },
     classifiers=[
@@ -60,10 +60,10 @@ setup(
     keywords="static-site-generator link-bio jinja2 brutalist-design",
     python_requires=">=3.8",
     project_urls={
-        "Homepage": "https://github.com/rafnixg/linkbio",
-        "Documentation": "https://linkbio.readthedocs.io/",
-        "Repository": "https://github.com/rafnixg/linkbio",
-        "Issues": "https://github.com/rafnixg/linkbio/issues",
-        "Changelog": "https://github.com/rafnixg/linkbio/blob/main/CHANGELOG.md",
+        "Homepage": "https://github.com/rafnixg/links",
+        "Documentation": "https://linkbiosite.readthedocs.io/",
+        "Repository": "https://github.com/rafnixg/links",
+        "Issues": "https://github.com/rafnixg/links/issues",
+        "Changelog": "https://github.com/rafnixg/links/blob/main/CHANGELOG.md",
     },
 )

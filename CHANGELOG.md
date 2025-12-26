@@ -8,19 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2025-12-26
 
 ### Added
-- **Library Structure**: Refactored from flat script to proper Python library with `src/linkbio/` package
-- **CLI Interface**: Added command-line interface with `linkbio build`, `linkbio init`, and `linkbio serve` commands
+- **Library Structure**: Refactored from flat script to proper Python library with `src/linkbiosite/` package
+- **CLI Interface**: Added command-line interface with `linkbiosite build`, `linkbiosite init`, and `linkbiosite serve` commands
 - **Modern Packaging**: Implemented `pyproject.toml` with proper dependency management
 - **Docker Optimization**: Multi-stage builds and volume mounting support
 - **Type Hints**: Added comprehensive type annotations throughout the codebase
 - **Fallback Templates**: Automatic fallback to package templates when project templates missing
 
 ### Changed
-- **Project Structure**: Moved from `build.py` script to `src/linkbio/core.py` library module
+- **Project Structure**: Moved from `build.py` script to `src/linkbiosite/core.py` library module
 - **Import System**: Updated to use proper Python package imports
 - **Build Process**: Enhanced with better error handling and validation
-- **Templates**: Moved to `src/linkbio/templates/` within package
-- **Assets**: Relocated to `src/linkbio/assets/` for proper packaging
+- **Templates**: Moved to `src/linkbiosite/templates/` within package
+- **Assets**: Relocated to `src/linkbiosite/assets/` for proper packaging
+- **Project Rename**: Renamed from "linkbio" to "linkbiosite" for better clarity and discoverability
 
 ### Removed
 - **Legacy Scripts**: Removed standalone `build.py` and `data_loader.py` scripts

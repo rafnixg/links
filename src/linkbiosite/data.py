@@ -1,5 +1,5 @@
 """
-LinkBio Data Loading and Validation Module
+LinkBioSite Data Loading and Validation Module
 
 This module handles loading and validating site configuration data.
 """

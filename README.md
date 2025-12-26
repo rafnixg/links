@@ -1,11 +1,11 @@
-# LinkBio
+# LinkBioSite
 
 [![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![PyPI Version](https://img.shields.io/pypi/v/linkbio.svg)](https://pypi.org/project/linkbio/)
+[![PyPI Version](https://img.shields.io/pypi/v/linkbiosite.svg)](https://pypi.org/project/linkbiosite/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Jinja2](https://img.shields.io/badge/Jinja2-3.0+-orange.svg)](https://jinja.palletsprojects.com/)
-[![GitHub stars](https://img.shields.io/github/stars/rafnixg/linkbio.svg?style=social&label=Star)](https://github.com/rafnixg/linkbio)
-[![GitHub forks](https://img.shields.io/github/forks/rafnixg/linkbio.svg?style=social&label=Fork)](https://github.com/rafnixg/linkbio/fork)
+[![GitHub stars](https://img.shields.io/github/stars/rafnixg/links.svg?style=social&label=Star)](https://github.com/rafnixg/links)
+[![GitHub forks](https://img.shields.io/github/forks/rafnixg/links.svg?style=social&label=Fork)](https://github.com/rafnixg/links/fork)
 
 A modern, brutalist-designed static site generator for creating beautiful link bio pages. Built with Python and Jinja2 templates, featuring 2026 design trends with cosmic midnight color palettes and experimental layouts.
 
@@ -27,17 +27,17 @@ A modern, brutalist-designed static site generator for creating beautiful link b
 
 ### Installation
 
-Install LinkBio using pip:
+Install LinkBioSite using pip:
 
 ```bash
-pip install linkbio
+pip install linkbiosite
 ```
 
 Or install from source for development:
 
 ```bash
-git clone https://github.com/rafnixg/linkbio.git
-cd linkbio
+git clone https://github.com/rafnixg/links.git
+cd links
 pip install -e .
 ```
 
@@ -45,7 +45,7 @@ pip install -e .
 
 1. Initialize a new project:
 ```bash
-linkbio init my-bio
+linkbiosite init my-bio
 cd my-bio
 ```
 
@@ -71,12 +71,12 @@ cd my-bio
 
 3. Build your site:
 ```bash
-linkbio build
+linkbiosite build
 ```
 
 4. Serve locally for development:
 ```bash
-linkbio serve
+linkbiosite serve
 ```
 
 Your link bio will be available at http://localhost:8000
@@ -85,28 +85,28 @@ Your link bio will be available at http://localhost:8000
 
 ### Command Line Interface
 
-LinkBio provides a comprehensive CLI for all operations:
+LinkBioSite provides a comprehensive CLI for all operations:
 
 ```bash
 # Initialize a new project
-linkbio init [directory]
+linkbiosite init [directory]
 
 # Build the static site
-linkbio build [--output OUTPUT_DIR]
+linkbiosite build [--output OUTPUT_DIR]
 
 # Serve locally for development
-linkbio serve [--port PORT] [--host HOST]
+linkbiosite serve [--port PORT] [--host HOST]
 
 # Show help
-linkbio --help
+linkbiosite --help
 ```
 
 ### Python API
 
-Use LinkBio as a Python library:
+Use LinkBioSite as a Python library:
 
 ```python
-from linkbio import build, init, serve
+from linkbiosite import build, init, serve
 
 # Initialize a new project
 init("my-bio-project")
@@ -121,10 +121,10 @@ serve(port=8000)
 ### Advanced Usage
 
 ```python
-from linkbio import LinkBioGenerator
+from linkbiosite import LinkBioSiteGenerator
 
 # Create a custom generator
-generator = LinkBioGenerator(project_root="/path/to/project")
+generator = LinkBioSiteGenerator(project_root="/path/to/project")
 
 # Build with custom output directory
 output_path = generator.build_site(output_dir="/custom/output")
@@ -149,8 +149,8 @@ docker run -it --rm \
   -v $(pwd):/app/project \
   -v $(pwd)/public:/app/output \
   -p 8000:8000 \
-  linkbio:dev \
-  linkbio serve --host 0.0.0.0
+  linkbiosite:dev \
+  linkbiosite serve --host 0.0.0.0
 ```
 
 ### Production
@@ -159,15 +159,15 @@ Build and run the production container:
 
 ```bash
 # Build production image
-docker build --target production -t linkbio:prod .
+docker build --target production -t linkbiosite:prod .
 
 # Run nginx server
-docker run -d -p 80:80 linkbio:prod
+docker run -d -p 80:80 linkbiosite:prod
 ```
 
 ## 📁 Project Structure
 
-When you initialize a new LinkBio project, you'll get:
+When you initialize a new LinkBioSite project, you'll get:
 
 ```
 my-bio/

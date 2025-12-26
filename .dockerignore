@@ -87,7 +87,7 @@ npm-debug.log*
 .web/
 uploaded_files/
 
-# LinkBio specific
+# LinkBioSite specific
 public/
 public_export/
 *.db

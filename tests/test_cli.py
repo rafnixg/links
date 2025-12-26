@@ -1,5 +1,5 @@
 """
-Tests for LinkBio CLI functionality.
+Tests for LinkBioSite CLI functionality.
 """
 
 import subprocess
@@ -10,32 +10,32 @@ import tempfile
 
 
 class TestCLI:
-    """Test the LinkBio CLI commands."""
+    """Test the LinkBioSite CLI commands."""
 
     def test_cli_help(self):
         """Test that CLI help works."""
         result = subprocess.run(
-            [sys.executable, "-m", "linkbio.cli", "--help"],
+            [sys.executable, "-m", "linkbiosite.cli", "--help"],
             capture_output=True,
             text=True,
             cwd=Path(__file__).parent.parent,
         )
 
         assert result.returncode == 0
-        assert "LinkBio" in result.stdout
+        assert "LinkBioSite" in result.stdout
         assert "Available commands" in result.stdout
 
     def test_cli_init(self):
         """Test CLI init command."""
         with tempfile.TemporaryDirectory() as tmpdir:
             result = subprocess.run(
-                [sys.executable, "-m", "linkbio.cli", "init", tmpdir],
+                [sys.executable, "-m", "linkbiosite.cli", "init", tmpdir],
                 capture_output=True,
                 text=True,
             )
 
             assert result.returncode == 0
-            assert "New Link Bio project initialized" in result.stdout
+            assert "New Link Bio Site project initialized" in result.stdout
 
             # Check that files were created
             tmpdir_path = Path(tmpdir)
@@ -52,7 +52,7 @@ class TestCLI:
 
             # First init a project
             result_init = subprocess.run(
-                [sys.executable, "-m", "linkbio.cli", "init", str(tmpdir_path)],
+                [sys.executable, "-m", "linkbiosite.cli", "init", str(tmpdir_path)],
                 capture_output=True,
                 text=True,
             )
@@ -61,7 +61,7 @@ class TestCLI:
 
             # Then build it
             result_build = subprocess.run(
-                [sys.executable, "-m", "linkbio.cli", "build"],
+                [sys.executable, "-m", "linkbiosite.cli", "build"],
                 capture_output=True,
                 text=True,
                 cwd=tmpdir_path,
@@ -84,7 +84,7 @@ class TestCLI:
             (tmpdir_path / "existing.txt").write_text("existing")
 
             result = subprocess.run(
-                [sys.executable, "-m", "linkbio.cli", "init", str(tmpdir_path)],
+                [sys.executable, "-m", "linkbiosite.cli", "init", str(tmpdir_path)],
                 capture_output=True,
                 text=True,
             )

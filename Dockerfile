@@ -1,4 +1,4 @@
-# Multi-stage Dockerfile for LinkBio Static Site Generator
+# Multi-stage Dockerfile for LinkBioSite Static Site Generator
 # Stage 1: Builder stage for installing dependencies
 FROM python:3.11-slim as builder
 
@@ -39,7 +39,7 @@ RUN apt-get update && apt-get install -y \
 COPY --from=builder /opt/venv /opt/venv
 
 # Create app user
-RUN useradd --create-home --shell /bin/bash linkbio
+RUN useradd --create-home --shell /bin/bash linkbiosite
 
 # Set working directory
 WORKDIR /app
@@ -52,17 +52,17 @@ RUN pip install -e .
 
 # Create directories for volume mounting
 RUN mkdir -p /app/project /app/output && \
-    chown -R linkbio:linkbio /app
+    chown -R linkbiosite:linkbiosite /app
 
 # Switch to non-root user
-USER linkbio
+USER linkbiosite
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD python -c "import linkbio; print('LinkBio is healthy')" || exit 1
+    CMD python -c "import linkbiosite; print('LinkBioSite is healthy')" || exit 1
 
 # Default command - can be overridden
-CMD ["linkbio", "--help"]
+CMD ["linkbiosite", "--help"]
 
 # Stage 3: Production stage for serving built sites
 FROM nginx:alpine as production

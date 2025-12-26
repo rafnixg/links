@@ -1,5 +1,5 @@
 """
-LinkBio Static Site Generator Core Module
+LinkBioSite Static Site Generator Core Module
 
 This module provides the core functionality for generating static link bio sites.
 """
@@ -17,7 +17,7 @@ from jinja2 import Environment, FileSystemLoader
 from .data import save_data
 
 
-class LinkBioGenerator:
+class LinkBioSiteGenerator:
     """Main class for generating Link Bio static sites."""
 
     def __init__(self, project_root: Optional[Path] = None):
@@ -220,7 +220,7 @@ def build(project_root: Optional[str] = None, output_dir: Optional[str] = None) 
     root_path = Path(project_root) if project_root else None
     output_path = Path(output_dir) if output_dir else None
 
-    generator = LinkBioGenerator(root_path)
+    generator = LinkBioSiteGenerator(root_path)
     result_path = generator.build_site(output_path)
 
     return str(result_path)
@@ -228,7 +228,7 @@ def build(project_root: Optional[str] = None, output_dir: Optional[str] = None) 
 
 def init(project_dir: str = ".", template: str = "full") -> str:
     """
-    Initialize a new Link Bio project in the specified directory.
+    Initialize a new Link Bio Site project in the specified directory.
 
     Args:
         project_dir: Directory to initialize the project in.

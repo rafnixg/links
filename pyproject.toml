@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "linkbio"
+name = "linkbiosite"
 version = "1.0.0"
 description = "A modern, brutalist-designed static site generator for link bio pages"
 readme = "README.md"
@@ -50,14 +50,14 @@ docs = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/rafnixg/linkbio"
-Documentation = "https://linkbio.readthedocs.io/"
-Repository = "https://github.com/rafnixg/linkbio"
-Issues = "https://github.com/rafnixg/linkbio/issues"
-Changelog = "https://github.com/rafnixg/linkbio/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/rafnixg/links"
+Documentation = "https://linkbiosite.readthedocs.io/"
+Repository = "https://github.com/rafnixg/links"
+Issues = "https://github.com/rafnixg/links/issues"
+Changelog = "https://github.com/rafnixg/links/blob/main/CHANGELOG.md"
 
 [project.scripts]
-linkbio = "linkbio.cli:main"
+linkbiosite = "linkbiosite.cli:main"
 
 [tool.setuptools]
 zip-safe = false
@@ -68,7 +68,7 @@ where = ["src"]
 exclude = ["tests*", "docs*"]
 
 [tool.setuptools.package-data]
-linkbio = ["templates/*", "assets/*"]
+linkbiosite = ["templates/*", "assets/*"]
 
 [tool.black]
 line-length = 88
@@ -92,7 +92,7 @@ extend-exclude = '''
 profile = "black"
 multi_line_output = 3
 line_length = 88
-known_first_party = ["linkbio"]
+known_first_party = ["linkbiosite"]
 known_third_party = ["jinja2"]
 
 [tool.mypy]
@@ -116,14 +116,14 @@ ignore_errors = true
 
 [tool.pytest.ini_options]
 minversion = "7.0"
-addopts = "-ra -q --cov=linkbio --cov-report=term-missing --cov-report=html"
+addopts = "-ra -q --cov=linkbiosite --cov-report=term-missing --cov-report=html"
 testpaths = ["tests"]
 python_files = "test_*.py"
 python_classes = "Test*"
 python_functions = "test_*"
 
 [tool.coverage.run]
-source = ["linkbio"]
+source = ["linkbiosite"]
 omit = ["*/tests/*", "*/test_*.py"]
 
 [tool.coverage.report]

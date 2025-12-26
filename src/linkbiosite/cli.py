@@ -1,5 +1,5 @@
 """
-LinkBio Command Line Interface
+LinkBioSite Command Line Interface
 
 Provides CLI commands for building, initializing, and serving Link Bio sites.
 """
@@ -12,14 +12,14 @@ from pathlib import Path
 from typing import Optional
 from urllib.parse import unquote
 
-from .core import LinkBioGenerator, build
+from .core import LinkBioSiteGenerator, build
 from .data import load_data, save_data
 
 
 def create_parser() -> argparse.ArgumentParser:
     """Create the main argument parser."""
     parser = argparse.ArgumentParser(
-        description="LinkBio - Static Site Generator for Link Bio Pages", prog="linkbio"
+        description="LinkBioSite - Static Site Generator for Link Bio Pages", prog="linkbiosite"
     )
 
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
@@ -39,7 +39,7 @@ def create_parser() -> argparse.ArgumentParser:
 
     # Init command
     init_parser = subparsers.add_parser(
-        "init", help="Initialize a new Link Bio project"
+        "init", help="Initialize a new Link Bio Site project"
     )
     init_parser.add_argument(
         "directory",
@@ -203,7 +203,7 @@ a:hover {
         with open(target_dir / "templates" / "styles.css", "w") as f:
             f.write(css_content)
 
-        print(f"[SUCCESS] New Link Bio project initialized in {target_dir}")
+        print(f"[SUCCESS] New Link Bio Site project initialized in {target_dir}")
         print("Next steps:")
         print("1. Edit data.json with your information")
         print("2. Customize templates/index.html and templates/styles.css")

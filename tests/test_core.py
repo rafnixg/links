@@ -1,27 +1,27 @@
 """
-Tests for LinkBio core functionality.
+Tests for LinkBioSite core functionality.
 """
 
 import json
 import tempfile
 from pathlib import Path
 import pytest
-from linkbio.core import LinkBioGenerator
-from linkbio.data import load_data, validate_data, save_data
+from linkbiosite.core import LinkBioSiteGenerator
+from linkbiosite.data import load_data, validate_data, save_data
 
 
-class TestLinkBioGenerator:
-    """Test the LinkBioGenerator class."""
+class TestLinkBioSiteGenerator:
+    """Test the LinkBioSiteGenerator class."""
 
     def test_init_default(self):
         """Test generator initialization with default values."""
-        generator = LinkBioGenerator()
+        generator = LinkBioSiteGenerator()
         assert generator.project_root == Path.cwd()
         # Templates dir falls back to package if project doesn't have it
         expected_templates = Path.cwd() / "templates"
         if not expected_templates.exists():
             expected_templates = (
-                Path(__file__).parent.parent / "src" / "linkbio" / "templates"
+                Path(__file__).parent.parent / "src" / "linkbiosite" / "templates"
             )
         assert generator.templates_dir == expected_templates
         assert generator.assets_dir == Path.cwd() / "assets"
@@ -30,13 +30,13 @@ class TestLinkBioGenerator:
     def test_init_custom_root(self):
         """Test generator initialization with custom project root."""
         custom_root = Path("/tmp/test")
-        generator = LinkBioGenerator(custom_root)
+        generator = LinkBioSiteGenerator(custom_root)
         assert generator.project_root == custom_root
         # Templates dir falls back to package if project doesn't have it
         expected_templates = custom_root / "templates"
         if not expected_templates.exists():
             expected_templates = (
-                Path(__file__).parent.parent / "src" / "linkbio" / "templates"
+                Path(__file__).parent.parent / "src" / "linkbiosite" / "templates"
             )
         assert generator.templates_dir == expected_templates
         assert generator.assets_dir == custom_root / "assets"
@@ -45,7 +45,7 @@ class TestLinkBioGenerator:
     def test_load_data_missing_file(self):
         """Test loading data when file doesn't exist."""
         with tempfile.TemporaryDirectory() as tmpdir:
-            generator = LinkBioGenerator(Path(tmpdir))
+            generator = LinkBioSiteGenerator(Path(tmpdir))
             with pytest.raises(FileNotFoundError):
                 generator.load_data()
 
@@ -75,7 +75,7 @@ class TestLinkBioGenerator:
             with open(data_file, "w") as f:
                 json.dump(sample_data, f)
 
-            generator = LinkBioGenerator(tmpdir)
+            generator = LinkBioSiteGenerator(tmpdir)
             data = generator.load_data()
 
             assert data["bio"]["name"] == "Test"
@@ -100,7 +100,7 @@ class TestLinkBioGenerator:
             "meta": {},
         }
 
-        generator = LinkBioGenerator()
+        generator = LinkBioSiteGenerator()
         assert generator.validate_data(valid_data) is True
 
     def test_validate_data_missing_key(self):
@@ -118,7 +118,7 @@ class TestLinkBioGenerator:
             # Missing footer, analytics, meta
         }
 
-        generator = LinkBioGenerator()
+        generator = LinkBioSiteGenerator()
         with pytest.raises(ValueError, match="Missing required key"):
             generator.validate_data(invalid_data)
 
@@ -132,7 +132,7 @@ class TestLinkBioGenerator:
             "meta": {},
         }
 
-        generator = LinkBioGenerator()
+        generator = LinkBioSiteGenerator()
         with pytest.raises(ValueError, match="Missing bio key"):
             generator.validate_data(invalid_data)
 

@@ -1,8 +1,8 @@
 include README.md
 include LICENSE
 include CHANGELOG.md
-recursive-include src/linkbio/templates *
-recursive-include src/linkbio/assets *
+recursive-include src/linkbiosite/templates *
+recursive-include src/linkbiosite/assets *
 global-exclude *.pyc
 global-exclude __pycache__
 global-exclude .DS_Store
