@@ -7,10 +7,14 @@ This module provides the core functionality for generating static link bio sites
 import json
 import os
 import shutil
+import http.server
+import socketserver
 from datetime import date
 from pathlib import Path
 from typing import Dict, Any, Optional
 from jinja2 import Environment, FileSystemLoader
+
+from .data import save_data
 
 
 class LinkBioGenerator:
@@ -24,9 +28,11 @@ class LinkBioGenerator:
             project_root: Root directory of the project. Defaults to current directory.
         """
         self.project_root = project_root or Path.cwd()
-        self.templates_dir = self.project_root / 'templates'
-        self.assets_dir = self.project_root / 'assets'
-        self.data_file = self.project_root / 'data.json'
+        self.templates_dir = self.project_root / "templates"
+        if not self.templates_dir.exists():
+            self.templates_dir = Path(__file__).parent / "templates"
+        self.assets_dir = self.project_root / "assets"
+        self.data_file = self.project_root / "data.json"
 
     def load_data(self) -> Dict[str, Any]:
         """
@@ -42,12 +48,12 @@ class LinkBioGenerator:
         if not self.data_file.exists():
             raise FileNotFoundError(f"Data file not found: {self.data_file}")
 
-        with open(self.data_file, 'r', encoding='utf-8') as f:
+        with open(self.data_file, "r", encoding="utf-8") as f:
             data = json.load(f)
 
         # Add dynamic data
-        if 'footer' in data and 'copyright' in data['footer']:
-            data['footer']['copyright'] = data['footer']['copyright'].format(
+        if "footer" in data and "copyright" in data["footer"]:
+            data["footer"]["copyright"] = data["footer"]["copyright"].format(
                 year=date.today().year
             )
 
@@ -66,15 +72,22 @@ class LinkBioGenerator:
         Raises:
             ValueError: If required keys are missing or data structure is invalid.
         """
-        required_keys = ['bio', 'links', 'footer', 'analytics', 'meta']
+        required_keys = ["bio", "links", "footer", "analytics", "meta"]
         for key in required_keys:
             if key not in data:
                 raise ValueError(f"Missing required key: {key}")
 
         # Check bio section
-        bio_required = ['name', 'greeting', 'subtitle', 'handle', 'avatar', 'avatar_alt']
+        bio_required = [
+            "name",
+            "greeting",
+            "subtitle",
+            "handle",
+            "avatar",
+            "avatar_alt",
+        ]
         for key in bio_required:
-            if key not in data['bio']:
+            if key not in data["bio"]:
                 raise ValueError(f"Missing bio key: {key}")
 
         return True
@@ -90,13 +103,20 @@ class LinkBioGenerator:
             FileNotFoundError: If templates directory doesn't exist.
         """
         if not self.templates_dir.exists():
-            raise FileNotFoundError(f"Templates directory not found: {self.templates_dir}")
+            raise FileNotFoundError(
+                f"Templates directory not found: {self.templates_dir}"
+            )
 
         env = Environment(loader=FileSystemLoader(self.templates_dir))
         return env
 
-    def render_template(self, env: Environment, template_name: str,
-                       data: Dict[str, Any], output_path: Path) -> None:
+    def render_template(
+        self,
+        env: Environment,
+        template_name: str,
+        data: Dict[str, Any],
+        output_path: Path,
+    ) -> None:
         """
         Render a template with data to specified output path.
 
@@ -110,7 +130,7 @@ class LinkBioGenerator:
         rendered = template.render(**data)
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        with open(output_path, 'w', encoding='utf-8') as f:
+        with open(output_path, "w", encoding="utf-8") as f:
             f.write(rendered)
 
     def copy_assets(self, source_dir: Path, dest_dir: Path) -> None:
@@ -132,8 +152,8 @@ class LinkBioGenerator:
             output_dir: Output directory for static files.
         """
         # Copy styles.css
-        styles_src = self.templates_dir / 'styles.css'
-        styles_dest = output_dir / 'styles.css'
+        styles_src = self.templates_dir / "styles.css"
+        styles_dest = output_dir / "styles.css"
         if styles_src.exists():
             shutil.copy2(styles_src, styles_dest)
 
@@ -150,7 +170,7 @@ class LinkBioGenerator:
         Raises:
             Exception: If build process fails.
         """
-        output_dir = output_dir or self.project_root / 'public'
+        output_dir = output_dir or self.project_root / "public"
 
         try:
             # Clean output directory
@@ -166,18 +186,18 @@ class LinkBioGenerator:
             env = self.setup_jinja()
 
             # Render main page
-            self.render_template(env, 'index.html', data, output_dir / 'index.html')
+            self.render_template(env, "index.html", data, output_dir / "index.html")
 
             # Copy assets
-            self.copy_assets(self.assets_dir, output_dir / 'assets')
+            self.copy_assets(self.assets_dir, output_dir / "assets")
 
             # Copy static files
             self.copy_static_files(output_dir)
 
             # Copy existing public assets if any (for CSS/JS)
-            existing_public = self.project_root / 'public_export'
+            existing_public = self.project_root / "public_export"
             if existing_public.exists():
-                self.copy_assets(existing_public / 'assets', output_dir / 'assets')
+                self.copy_assets(existing_public / "assets", output_dir / "assets")
 
             print(f"Site built successfully in {output_dir}")
             return output_dir
@@ -239,28 +259,18 @@ def init(project_dir: str = ".", template: str = "full") -> str:
             "subtitle": "Your subtitle here",
             "handle": "@yourhandle",
             "avatar": "/avatar.png",
-            "avatar_alt": "YN"
+            "avatar_alt": "YN",
         },
         "links": {
             "Social": [
-                {
-                    "text": "Website",
-                    "tag": "globe",
-                    "url": "https://example.com"
-                }
+                {"text": "Website", "tag": "globe", "url": "https://example.com"}
             ]
         },
-        "footer": {
-            "copyright": "© {year} Your Name. All rights reserved."
-        },
+        "footer": {"copyright": "© {year} Your Name. All rights reserved."},
         "analytics": {},
-        "meta": {
-            "title": "Link Bio",
-            "description": "My personal link bio"
-        }
+        "meta": {"title": "Link Bio", "description": "My personal link bio"},
     }
 
-    from .data import save_data
     save_data(sample_data, target_dir / "data.json")
 
     # Create basic template
@@ -346,7 +356,9 @@ a:hover {
     return str(target_dir)
 
 
-def serve(host: str = "localhost", port: int = 8000, output_dir: str = "public") -> None:
+def serve(
+    host: str = "localhost", port: int = 8000, output_dir: str = "public"
+) -> None:
     """
     Serve the built site locally for development.
 
@@ -358,19 +370,18 @@ def serve(host: str = "localhost", port: int = 8000, output_dir: str = "public")
     Raises:
         FileNotFoundError: If output directory doesn't exist.
     """
-    import http.server
-    import socketserver
-
     output_path = Path(output_dir)
     if not output_path.exists():
-        raise FileNotFoundError(f"Output directory {output_path} does not exist. Run build() first.")
+        raise FileNotFoundError(
+            f"Output directory {output_path} does not exist. Run build() first."
+        )
 
     # Change to output directory for serving
     original_cwd = Path.cwd()
-    import os
     os.chdir(output_path)
 
     try:
+
         class QuietHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             def log_message(self, format, *args):
                 # Suppress log messages

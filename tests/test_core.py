@@ -17,7 +17,11 @@ class TestLinkBioGenerator:
         """Test generator initialization with default values."""
         generator = LinkBioGenerator()
         assert generator.project_root == Path.cwd()
-        assert generator.templates_dir == Path.cwd() / 'templates'
+        # Templates dir falls back to package if project doesn't have it
+        expected_templates = Path.cwd() / 'templates'
+        if not expected_templates.exists():
+            expected_templates = Path(__file__).parent.parent / 'src' / 'linkbio' / 'templates'
+        assert generator.templates_dir == expected_templates
         assert generator.assets_dir == Path.cwd() / 'assets'
         assert generator.data_file == Path.cwd() / 'data.json'
 
@@ -26,7 +30,11 @@ class TestLinkBioGenerator:
         custom_root = Path("/tmp/test")
         generator = LinkBioGenerator(custom_root)
         assert generator.project_root == custom_root
-        assert generator.templates_dir == custom_root / 'templates'
+        # Templates dir falls back to package if project doesn't have it
+        expected_templates = custom_root / 'templates'
+        if not expected_templates.exists():
+            expected_templates = Path(__file__).parent.parent / 'src' / 'linkbio' / 'templates'
+        assert generator.templates_dir == expected_templates
         assert generator.assets_dir == custom_root / 'assets'
         assert generator.data_file == custom_root / 'data.json'
 

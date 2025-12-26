@@ -25,17 +25,17 @@ def load_data(data_file: Optional[Path] = None) -> Dict[str, Any]:
         json.JSONDecodeError: If data file contains invalid JSON.
     """
     if data_file is None:
-        data_file = Path.cwd() / 'data.json'
+        data_file = Path.cwd() / "data.json"
 
     if not data_file.exists():
         raise FileNotFoundError(f"Data file not found: {data_file}")
 
-    with open(data_file, 'r', encoding='utf-8') as f:
+    with open(data_file, "r", encoding="utf-8") as f:
         data = json.load(f)
 
     # Add dynamic data
-    if 'footer' in data and 'copyright' in data['footer']:
-        data['footer']['copyright'] = data['footer']['copyright'].format(
+    if "footer" in data and "copyright" in data["footer"]:
+        data["footer"]["copyright"] = data["footer"]["copyright"].format(
             year=date.today().year
         )
 
@@ -55,15 +55,15 @@ def validate_data(data: Dict[str, Any]) -> bool:
     Raises:
         ValueError: If required keys are missing or data structure is invalid.
     """
-    required_keys = ['bio', 'links', 'footer', 'analytics', 'meta']
+    required_keys = ["bio", "links", "footer", "analytics", "meta"]
     for key in required_keys:
         if key not in data:
             raise ValueError(f"Missing required key: {key}")
 
     # Check bio section
-    bio_required = ['name', 'greeting', 'subtitle', 'handle', 'avatar', 'avatar_alt']
+    bio_required = ["name", "greeting", "subtitle", "handle", "avatar", "avatar_alt"]
     for key in bio_required:
-        if key not in data['bio']:
+        if key not in data["bio"]:
             raise ValueError(f"Missing bio key: {key}")
 
     return True
@@ -78,9 +78,9 @@ def save_data(data: Dict[str, Any], data_file: Optional[Path] = None) -> None:
         data_file: Path where to save the data. If None, saves to 'data.json' in current directory.
     """
     if data_file is None:
-        data_file = Path.cwd() / 'data.json'
+        data_file = Path.cwd() / "data.json"
 
     data_file.parent.mkdir(parents=True, exist_ok=True)
 
-    with open(data_file, 'w', encoding='utf-8') as f:
+    with open(data_file, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)

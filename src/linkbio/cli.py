@@ -6,8 +6,11 @@ Provides CLI commands for building, initializing, and serving Link Bio sites.
 
 import argparse
 import sys
+import http.server
+import socketserver
 from pathlib import Path
 from typing import Optional
+from urllib.parse import unquote
 
 from .core import LinkBioGenerator, build
 from .data import load_data, save_data
@@ -16,8 +19,7 @@ from .data import load_data, save_data
 def create_parser() -> argparse.ArgumentParser:
     """Create the main argument parser."""
     parser = argparse.ArgumentParser(
-        description="LinkBio - Static Site Generator for Link Bio Pages",
-        prog="linkbio"
+        description="LinkBio - Static Site Generator for Link Bio Pages", prog="linkbio"
     )
 
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
@@ -25,50 +27,49 @@ def create_parser() -> argparse.ArgumentParser:
     # Build command
     build_parser = subparsers.add_parser("build", help="Build the static site")
     build_parser.add_argument(
-        "--output", "-o",
+        "--output",
+        "-o",
         type=str,
         default="public",
-        help="Output directory for built site (default: public)"
+        help="Output directory for built site (default: public)",
     )
     build_parser.add_argument(
-        "--config", "-c",
-        type=str,
-        help="Path to data.json configuration file"
+        "--config", "-c", type=str, help="Path to data.json configuration file"
     )
 
     # Init command
-    init_parser = subparsers.add_parser("init", help="Initialize a new Link Bio project")
+    init_parser = subparsers.add_parser(
+        "init", help="Initialize a new Link Bio project"
+    )
     init_parser.add_argument(
         "directory",
         nargs="?",
         default=".",
-        help="Directory to initialize (default: current directory)"
+        help="Directory to initialize (default: current directory)",
     )
     init_parser.add_argument(
         "--template",
         choices=["minimal", "full"],
         default="full",
-        help="Project template to use (default: full)"
+        help="Project template to use (default: full)",
     )
 
     # Serve command
-    serve_parser = subparsers.add_parser("serve", help="Serve the site locally for development")
-    serve_parser.add_argument(
-        "--port", "-p",
-        type=int,
-        default=8000,
-        help="Port to serve on (default: 8000)"
+    serve_parser = subparsers.add_parser(
+        "serve", help="Serve the site locally for development"
     )
     serve_parser.add_argument(
-        "--host",
-        default="localhost",
-        help="Host to bind to (default: localhost)"
+        "--port", "-p", type=int, default=8000, help="Port to serve on (default: 8000)"
     )
     serve_parser.add_argument(
-        "--output", "-o",
+        "--host", default="localhost", help="Host to bind to (default: localhost)"
+    )
+    serve_parser.add_argument(
+        "--output",
+        "-o",
         type=str,
         default="public",
-        help="Directory containing built site (default: public)"
+        help="Directory containing built site (default: public)",
     )
 
     return parser
@@ -108,25 +109,16 @@ def handle_init(args: argparse.Namespace) -> int:
                 "subtitle": "Your subtitle here",
                 "handle": "@yourhandle",
                 "avatar": "/avatar.png",
-                "avatar_alt": "YN"
+                "avatar_alt": "YN",
             },
             "links": {
                 "Social": [
-                    {
-                        "text": "Website",
-                        "tag": "globe",
-                        "url": "https://example.com"
-                    }
+                    {"text": "Website", "tag": "globe", "url": "https://example.com"}
                 ]
             },
-            "footer": {
-                "copyright": "© {year} Your Name. All rights reserved."
-            },
+            "footer": {"copyright": "© {year} Your Name. All rights reserved."},
             "analytics": {},
-            "meta": {
-                "title": "Link Bio",
-                "description": "My personal link bio"
-            }
+            "meta": {"title": "Link Bio", "description": "My personal link bio"},
         }
 
         save_data(sample_data, target_dir / "data.json")
@@ -228,13 +220,12 @@ a:hover {
 def handle_serve(args: argparse.Namespace) -> int:
     """Handle the serve command."""
     try:
-        import http.server
-        import socketserver
-        from urllib.parse import unquote
-
         output_dir = Path(args.output)
         if not output_dir.exists():
-            print(f"✗ Output directory {output_dir} does not exist. Run 'linkbio build' first.", file=sys.stderr)
+            print(
+                f"✗ Output directory {output_dir} does not exist. Run 'linkbio build' first.",
+                file=sys.stderr,
+            )
             return 1
 
         class QuietHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
@@ -242,7 +233,9 @@ def handle_serve(args: argparse.Namespace) -> int:
                 # Suppress log messages
                 pass
 
-        with socketserver.TCPServer((args.host, args.port), QuietHTTPRequestHandler) as httpd:
+        with socketserver.TCPServer(
+            (args.host, args.port), QuietHTTPRequestHandler
+        ) as httpd:
             print(f"✓ Serving site at http://{args.host}:{args.port}")
             print("Press Ctrl+C to stop")
             httpd.serve_forever()
