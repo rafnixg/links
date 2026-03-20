@@ -43,17 +43,12 @@
         "text": "GitLab",
         "tag": "gitlab",
         "url": "https://gitlab.com/rafnixg"
-      },
-      {
-        "text": "Own Git Server",
-        "tag": "git-fork",
-        "url": "https://git.rafnixg.dev/rafnixg"
       }
     ]
   },
   "footer": {
     "copyright": "©️ 2012-{year} Made with ❤️ by Rafnix Guzmán",
-    "source_url": "https://git.rafnixg.dev/rafnixg/links"
+    "source_url": "https://github.com/rafnixg/links"
   },
   "analytics": {
     "umami_src": "https://umami.rafnixg.dev/script.js",
