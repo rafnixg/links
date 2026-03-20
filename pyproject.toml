@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "linkbiosite"
-version = "3.0.0"
+version = "3.1.0"
 description = "A modern, brutalist-designed static site generator for link bio pages"
 readme = "README.md"
 license = {text = "MIT"}
