@@ -13,7 +13,7 @@ Example:
 from .core import LinkBioSiteGenerator, build, init, serve
 from .data import load_data, validate_data, save_data
 
-__version__ = "1.0.0"
+__version__ = "3.1.0"
 __author__ = "Rafnix Guzmán"
 __email__ = "rafnixg@gmail.com"
 
