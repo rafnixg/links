@@ -38,3 +38,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **pytest**: Testing framework with 14 passing tests
 - **Black**: Code formatting for PEP8 compliance
 - **Docker**: Containerized deployment with nginx
+
+## [3.1.0] - 2026-03-19
+
+### Changed
+- **Version bump**: Synchronised package metadata across `pyproject.toml`, `setup.py`, and `src/linkbiosite/__init__.py` to `3.1.0`.
+- **CI / CD**: Added GitHub Actions workflows for building the static site and for publishing to PyPI on release.
+
+### Added
+- `.github/workflows/build-static.yml` — workflow to build the site and update `public/` from CI.
+- `.github/workflows/publish-pypi-on-release.yml` — workflow to publish a PyPI release when a GitHub Release is created.
+- `openspec/changes/add-github-ci-workflows/*` — design/proposal/specs and tasks describing the new CI workflows.
+
+### Documentation
+- Updated `README.md` and other documentation to reference the new workflows and packaging improvements.
+
+### Technical
+- Bumped project version to `3.1.0` (no functional code changes beyond packaging/metadata updates).
